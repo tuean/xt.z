@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+
+	<!--dev zhongxiaotian-->
+	<property name="LOG_HOME" value="/Users/zhongxiaotian/log/xtz"/>
+
+	<springProperty name="rootLevel" source="logback.root.level" defaultValue="info" />
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}  %-5level [%thread]%logger{35}-%msg %n</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="logfile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/xtz.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- rollover daily -->
+
+			<fileNamePattern>${LOG_HOME}/xtz.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<!-- each file should be at most 100MB, keep 60 days worth of history, 
+				but at most 20GB -->
+			<maxFileSize>500MB</maxFileSize>    
+	        <maxHistory>15</maxHistory>
+	        <totalSizeCap>10GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%class:%line] - %m %n</pattern>-->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}  %-5level [%thread]%logger{35}-%msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="${rootLevel}">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="logfile" />
+	</root>
+
+	<logger name="ele.me.dao" level="DEBUG" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+</configuration>  

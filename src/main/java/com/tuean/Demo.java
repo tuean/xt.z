@@ -1,3 +1,5 @@
+package com.tuean;
+
 /**
  * Created by zhongxiaotian on 2018/3/3.
  */
