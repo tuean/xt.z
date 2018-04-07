@@ -43,8 +43,10 @@ public class SeleniumService {
         logo.click();
         System.out.println(logo.getLocation().x);
 
+        // 获取屏幕截图
         File srcFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(srcFile, new File("c:\\1.png"));
+        String filePath = "";
+        FileUtils.copyFile(srcFile, new File(filePath));
     }
 
     public static void main(String[] args) throws Exception{
