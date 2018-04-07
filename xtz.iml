@@ -106,5 +106,6 @@
     <orderEntry type="library" name="Maven: com.github.vidstige:jadb:-v1.0-g94ebf38-23" level="project" />
     <orderEntry type="library" name="Maven: com.sikulix:sikulixlibsmac:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.sikulix:sikulix2tigervnc:2.0.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.6" level="project" />
   </component>
 </module>
