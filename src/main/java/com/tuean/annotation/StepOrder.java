@@ -1,7 +1,5 @@
 package com.tuean.annotation;
 
-import com.tuean.util.StepConfig;
-
 import java.lang.annotation.*;
 
 /**

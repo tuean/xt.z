@@ -1,6 +1,6 @@
 package com.tuean.steps;
 
-import com.tuean.util.StepConfig;
+import com.tuean.config.StepConfig;
 
 /**
  * Created by zhongxiaotian on 2018/5/1.

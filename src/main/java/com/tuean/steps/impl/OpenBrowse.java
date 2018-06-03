@@ -1,7 +1,8 @@
-package com.tuean.steps;
+package com.tuean.steps.impl;
 
 import com.tuean.annotation.StepOrder;
-import com.tuean.util.StepConfig;
+import com.tuean.steps.ISteps;
+import com.tuean.config.StepConfig;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Created by zhongxiaotian on 2018/4/30.
  */
-@StepOrder(order = 1)
+@StepOrder(order = 2)
 public class OpenBrowse implements ISteps{
 
     private static Logger logger = LoggerFactory.getLogger(OpenBrowse.class);

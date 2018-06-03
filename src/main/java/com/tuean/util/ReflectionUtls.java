@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by zhongxiaotian on 2018/5/1.
@@ -23,8 +21,8 @@ public class ReflectionUtls {
      * @param packageDir
      * @return
      */
-    public static List<Class> getClassByPackage(String packageDir){
-        List<Class> list = new ArrayList<>();
+    public static Map<Integer, Class> getClassByPackage(String packageDir){
+        Map<Integer, Class> map = new TreeMap<>();
         try {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
             assert classLoader != null;
@@ -36,38 +34,35 @@ public class ReflectionUtls {
                 dirs.add(new File(resource.getFile()));
             }
             for (File directory : dirs) {
-                list.addAll(findClasses(directory, packageDir));
+                map.putAll(findClasses(directory, packageDir));
             }
 
         } catch (IOException | ClassNotFoundException var){
 
         }
-        return list;
+        return map;
     }
 
-    private static List<Class> findClasses(File directory, String packageName) throws ClassNotFoundException {
-        List<Class> classes = new ArrayList<>();
+    private static Map<Integer, Class> findClasses(File directory, String packageName) throws ClassNotFoundException {
+        Map<Integer, Class> map = new TreeMap<>();
         if (!directory.exists()) {
-            return classes;
+            return map;
         }
         File[] files = directory.listFiles();
         for (File file : files) {
             if (file.isDirectory()) {
                 assert !file.getName().contains(".");
-                classes.addAll(findClasses(file, packageName + "." + file.getName()));
+                map.putAll(findClasses(file, packageName + "." + file.getName()));
             } else if (file.getName().endsWith(".class")) {
                 Class tmp = Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6));
                 StepOrder stepOrder = (StepOrder) tmp.getAnnotation(StepOrder.class);
                 if(stepOrder != null){
                     int order = stepOrder.order();
-                    classes.add(order, tmp);
+                    map.put(order, tmp);
                 }
             }
         }
-        return classes;
+        return map;
     }
 
-    public static void main(String[] args) {
-        getClassByPackage("com.tuean.steps");
-    }
 }

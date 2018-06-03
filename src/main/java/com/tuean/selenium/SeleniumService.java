@@ -26,7 +26,7 @@ public class SeleniumService {
     /**
      * 车牌地址
      */
-    @Value("${paimai.url}")
+    @Value("${bid.url}")
     private String paimaiUrl;
 
     public static void start(String paimaiUrl) throws Exception{
@@ -43,9 +43,10 @@ public class SeleniumService {
         logo.click();
         System.out.println(logo.getLocation().x);
 
-        // 获取屏幕截图
+        // get the screenshots of the whole window
+        // save the pic by the given path
         File srcFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-        String filePath = "";
+        String filePath = "/Users/zhongxiaotian/Desktop/tmp" + System.currentTimeMillis();
         FileUtils.copyFile(srcFile, new File(filePath));
     }
 
