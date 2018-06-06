@@ -12,12 +12,12 @@ public class SystemParam {
 
     private static Logger logger = LoggerFactory.getLogger(SystemParam.class);
 
-    public static String PROFILE_PATH;
+    public static String PROJECT_PATH;
 
     static{
         logger.info("start to set system params");
 //        logger.info(System.getProperty("java.class.path"));
         logger.info(System.getProperty("user.dir"));
-        PROFILE_PATH = System.getProperty("user.dir");
+        PROJECT_PATH = System.getProperty("user.dir");
     }
 }

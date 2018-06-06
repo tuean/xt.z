@@ -1,6 +1,7 @@
 package com.tuean.steps.impl;
 
 import com.tuean.annotation.StepOrder;
+import com.tuean.consont.SystemParam;
 import com.tuean.steps.ISteps;
 import com.tuean.config.StepConfig;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,7 +30,8 @@ public class Step1_PreConfigs implements ISteps{
     }
 
     public static String defaultFilePath(){
-        return "/Users/zhongxiaotian/Desktop/";
+        return SystemParam.PROJECT_PATH + "/tmp/";
+//        return "/Users/zhongxiaotian/Desktop/";
     }
 
     @Override
