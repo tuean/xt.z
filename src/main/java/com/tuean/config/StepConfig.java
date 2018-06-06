@@ -20,39 +20,32 @@ public class StepConfig {
 
     private static Logger logger = LoggerFactory.getLogger(StepConfig.class);
 
-    private Map classMap = new TreeMap();
+    private static class SingletonHolder {
+        private static final StepConfig INSTANCE = new StepConfig();
+    }
+    private StepConfig (){}
+    public static final StepConfig getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
+
+    private static Map classMap = new TreeMap();
 
     private static int instantOrder;
 
-    private WebDriver webDriver;
+    private static WebDriver webDriver;
 
     @PostConstruct
-    public void init(){
+    public static void init(){
         Map<Integer, Class> map = getClassByPackage("com.tuean.steps");
         if(map != null && !map.isEmpty()){
-            setclassMap(map);
+            setClassMap(map);
         }else{
             logger.warn("no steps configured");
             end();
         }
     }
 
-    public void start(){
-        Iterator iterator = classMap.entrySet().iterator();
-        if (iterator.hasNext()){
-            Map.Entry entry = (Map.Entry) iterator.next();
-            Class clazz = (Class) entry.getValue();
-            try {
-                Method method =  clazz.getMethod("work");
-                setInstantOrder((Integer) entry.getKey());
-                method.invoke(this);
-            } catch (Exception var){
-                var.printStackTrace();
-            }
-        }
-    }
-
-    public void next(){
+    public static void next(){
         boolean nextFlag = false;
         Iterator iterator = classMap.entrySet().iterator();
         while (iterator.hasNext()){
@@ -64,9 +57,9 @@ public class StepConfig {
             if (nextFlag){
                 Class clazz = (Class) entry.getValue();
                 try {
-                    Method method =  clazz.getMethod("work");
+                    Method method =  clazz.getMethod("work", StepConfig.class);
                     setInstantOrder((Integer) entry.getKey());
-                    method.invoke(this);
+                    method.invoke(clazz.newInstance(), StepConfig.getInstance());
                 } catch (Exception var){
                     var.printStackTrace();
                 }
@@ -74,27 +67,19 @@ public class StepConfig {
         }
     }
 
-    public void end(){
+    public static void end(){
         logger.info("got to end");
         System.gc();
         System.exit(0);
     }
 
 
-    public WebDriver getWebDriver() {
-        return webDriver;
-    }
-
-    public void setWebDriver(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
-
-    public Map getclassMap() {
+    public static Map getClassMap() {
         return classMap;
     }
 
-    public void setclassMap(Map classMap) {
-        this.classMap = classMap;
+    public static void setClassMap(Map classMap) {
+        StepConfig.classMap = classMap;
     }
 
     public static int getInstantOrder() {
@@ -103,5 +88,13 @@ public class StepConfig {
 
     public static void setInstantOrder(int instantOrder) {
         StepConfig.instantOrder = instantOrder;
+    }
+
+    public static WebDriver getWebDriver() {
+        return webDriver;
+    }
+
+    public static void setWebDriver(WebDriver webDriver) {
+        StepConfig.webDriver = webDriver;
     }
 }

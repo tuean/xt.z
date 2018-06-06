@@ -1,7 +1,7 @@
 package com.tuean.util;
 
 import com.tuean.config.StepConfig;
-import com.tuean.steps.impl.PreConfigs;
+import com.tuean.steps.impl.Step1_PreConfigs;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -25,7 +25,7 @@ public class PicUtils {
 
 
     public static File getScreenshot(StepConfig stepConfig, String filePath){
-        WebDriver webDriver = stepConfig.getWebDriver();
+        WebDriver webDriver = StepConfig.getWebDriver();
         File srcFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
         try{
             File resultFile = new File(filePath);
@@ -74,7 +74,52 @@ public class PicUtils {
 
 
     public static String getDefaultPicUrl(){
-        return PreConfigs.defaultFilePath() + System.currentTimeMillis() + ".jpg";
+        return Step1_PreConfigs.defaultFilePath() + System.currentTimeMillis() + ".jpg";
     }
+
+
+    /**
+     * 获取屏幕截图
+     * @return
+     *
+     */
+    public static BufferedImage getScreen() {
+        try {
+            // java.awt.image包中的类，可以用来抓取屏幕，即截屏。
+            Robot rb = new Robot();
+            // 获取缺省工具包
+            Toolkit tk = Toolkit.getDefaultToolkit();
+            // 屏幕尺寸规格
+            Dimension di = tk.getScreenSize();
+            Rectangle rec = new Rectangle(0, 0, di.width, di.height);
+            BufferedImage bi = rb.createScreenCapture(rec);
+            return bi;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    /**
+     * 保存图片,extent为格式，"jpg"、"png"等
+     * @param img
+     * @param extent
+     * @param newfile
+     */
+    public static void img2file(BufferedImage img,String extent,String newfile) {
+        try {
+            File file =  new File(newfile);
+            ImageIO.write(img, extent, file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main(String[] args) {
+        img2file(getScreen(), "jpg", "/Users/zhongxiaotian/Desktop/test1.png");
+    }
+
 
 }

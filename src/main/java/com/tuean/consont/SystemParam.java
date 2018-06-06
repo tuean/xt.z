@@ -16,7 +16,7 @@ public class SystemParam {
 
     static{
         logger.info("start to set system params");
-        logger.info(System.getProperty("java.class.path"));
+//        logger.info(System.getProperty("java.class.path"));
         logger.info(System.getProperty("user.dir"));
         PROFILE_PATH = System.getProperty("user.dir");
     }

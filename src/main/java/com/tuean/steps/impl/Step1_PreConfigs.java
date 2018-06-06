@@ -16,9 +16,9 @@ import java.util.List;
  * Created by zhongxiaotian on 2018/5/1.
  */
 @StepOrder(order = 1)
-public class PreConfigs implements ISteps{
+public class Step1_PreConfigs implements ISteps{
 
-    private static Logger logger = LoggerFactory.getLogger(PreConfigs.class);
+    private static Logger logger = LoggerFactory.getLogger(Step1_PreConfigs.class);
 
     public static List<Class> getBrowseDriverList(){
         List<Class> list = new ArrayList<>();
@@ -35,6 +35,6 @@ public class PreConfigs implements ISteps{
     @Override
     public void work(StepConfig stepConfig) {
         logger.info("Configuration completed");
-        stepConfig.next();
+        StepConfig.next();
     }
 }

@@ -14,14 +14,14 @@ import java.util.List;
  * Created by zhongxiaotian on 2018/4/30.
  */
 @StepOrder(order = 2)
-public class OpenBrowse implements ISteps{
+public class Step2_OpenBrowse implements ISteps{
 
-    private static Logger logger = LoggerFactory.getLogger(OpenBrowse.class);
+    private static Logger logger = LoggerFactory.getLogger(Step2_OpenBrowse.class);
 
     @Override
     public void work(StepConfig stepConfig){
         WebDriver webDriver = null;
-        List<Class> driverList = PreConfigs.getBrowseDriverList();
+        List<Class> driverList = Step1_PreConfigs.getBrowseDriverList();
         if(webDriver == null){
             for(Class clazz : driverList){
                 try{
@@ -34,11 +34,11 @@ public class OpenBrowse implements ISteps{
         }
 
         if(webDriver != null){
-            stepConfig.setWebDriver(webDriver);
-            stepConfig.next();
+            StepConfig.setWebDriver(webDriver);
+            StepConfig.next();
         }else{
             logger.error("cannot find webDriver, please check this computer");
-            stepConfig.end();
+            StepConfig.end();
         }
     }
 

@@ -5,21 +5,26 @@ import com.tuean.steps.ISteps;
 import com.tuean.config.StepConfig;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Value;
+
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zhongxiaotian on 2018/5/1.
  */
 @StepOrder(order = 3)
-public class GetToLoginUrl implements ISteps {
+public class Step3_GetToLoginUrl implements ISteps {
+
+    private static String givenUrl;
 
     @Value("${bid.url}")
-    private String givenUrl;
+    private void setBidUrl(String bidUrl){
+        Step3_GetToLoginUrl.givenUrl = bidUrl;
+    }
 
     @Override
     public void work(StepConfig stepConfig) {
         // get the normal webDriver
-        WebDriver webDriver = stepConfig.getWebDriver();
+        WebDriver webDriver = StepConfig.getWebDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
@@ -27,5 +32,6 @@ public class GetToLoginUrl implements ISteps {
         webDriver.get(givenUrl);
         // find the network operator
 //        WebElement e = webDriver.findElement();
+        StepConfig.next();
     }
 }
