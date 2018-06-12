@@ -35,7 +35,7 @@ public class Step1_PreConfigs implements ISteps{
     }
 
     @Override
-    public void work(StepConfig stepConfig) {
+    public void work() {
         logger.info("Configuration completed");
         StepConfig.next();
     }

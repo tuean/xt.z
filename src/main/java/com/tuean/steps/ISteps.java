@@ -7,5 +7,5 @@ import com.tuean.config.StepConfig;
  */
 public interface ISteps {
 
-    void work(StepConfig stepConfig);
+    void work();
 }

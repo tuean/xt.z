@@ -104,21 +104,31 @@ public class PicUtils {
     /**
      * 保存图片,extent为格式，"jpg"、"png"等
      * @param img
-     * @param extent
-     * @param newfile
+     * @param fileType 文件类型
+     * @param newfile 文件名
      */
-    public static void img2file(BufferedImage img,String extent,String newfile) {
+    public static void img2file(BufferedImage img, String fileType,String newfile) {
         try {
             File file =  new File(newfile);
-            ImageIO.write(img, extent, file);
+            ImageIO.write(img, fileType, file);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    public static void main(String[] args) {
-        img2file(getScreen(), "jpg", "/Users/zhongxiaotian/Desktop/test1.png");
+//    public static void main(String[] args) {
+//        img2file(getScreen(), "jpg", "/Users/zhongxiaotian/Desktop/test1.png");
+//    }
+
+    /**
+     * 图片转文字
+     * @param file
+     * @return
+     */
+    public static String img2String(File file){
+
+        return null;
     }
 
 

@@ -19,7 +19,7 @@ public class Step2_OpenBrowse implements ISteps{
     private static Logger logger = LoggerFactory.getLogger(Step2_OpenBrowse.class);
 
     @Override
-    public void work(StepConfig stepConfig){
+    public void work(){
         WebDriver webDriver = null;
         List<Class> driverList = Step1_PreConfigs.getBrowseDriverList();
         if(webDriver == null){

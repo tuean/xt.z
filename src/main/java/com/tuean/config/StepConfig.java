@@ -57,9 +57,9 @@ public class StepConfig {
             if (nextFlag){
                 Class clazz = (Class) entry.getValue();
                 try {
-                    Method method =  clazz.getMethod("work", StepConfig.class);
+                    Method method =  clazz.getMethod("work");
                     setInstantOrder((Integer) entry.getKey());
-                    method.invoke(clazz.newInstance(), StepConfig.getInstance());
+                    method.invoke(clazz.newInstance());
                 } catch (Exception var){
                     var.printStackTrace();
                 }

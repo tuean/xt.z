@@ -22,7 +22,7 @@ public class Step3_GetToLoginUrl implements ISteps {
     }
 
     @Override
-    public void work(StepConfig stepConfig) {
+    public void work() {
         // get the normal webDriver
         WebDriver webDriver = StepConfig.getWebDriver();
         webDriver.manage().window().maximize();
