@@ -3,7 +3,9 @@ package com.tuean.steps.impl;
 import com.tuean.annotation.StepOrder;
 import com.tuean.steps.ISteps;
 import com.tuean.config.StepConfig;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.concurrent.TimeUnit;
@@ -31,7 +33,10 @@ public class Step3_GetToLoginUrl implements ISteps {
         // open the given url
         webDriver.get(givenUrl);
         // find the network operator
-//        WebElement e = webDriver.findElement();
+        WebElement element = webDriver.findElement(By.xpath("//*[@id=\"lilink\"]/a[1]"));
+
+        element.click();
+
         StepConfig.next();
     }
 }

@@ -1,6 +1,7 @@
 package com.tuean.steps.impl;
 
 
+import com.tuean.annotation.StepOrder;
 import com.tuean.config.StepConfig;
 import com.tuean.steps.ISteps;
 import org.openqa.selenium.By;
@@ -13,9 +14,10 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by zhongxiaotian on 2018/6/11.
  */
-public class Step5_Click implements ISteps{
+@StepOrder(order = 5)
+public class Step5_Confirm implements ISteps{
 
-    private static Logger logger = LoggerFactory.getLogger(Step5_Click.class);
+    private static Logger logger = LoggerFactory.getLogger(Step5_Confirm.class);
 
 
     @Override
@@ -26,16 +28,20 @@ public class Step5_Click implements ISteps{
 
         // do search
         WebElement searchButton = webDriver.findElement(By.xpath("//*[@id=\"su\"]"));
-//        try{
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        searchButton.click();
 
         // initate mouse behavior
         Actions actions = new Actions(webDriver);
         actions.click(searchButton);
+
+//        try {
+//            WebElement confirmButton = webDriver.findElement(By.xpath("//*[@id=\"testBtnConfirm\"]/span"));
+//            if(confirmButton != null){
+//                confirmButton.click();
+//            }
+//        } catch (Exception var){
+//            var.printStackTrace();
+//        }
+
 
         logger.info(webDriver.getCurrentUrl());
     }

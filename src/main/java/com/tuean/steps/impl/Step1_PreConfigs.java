@@ -31,7 +31,6 @@ public class Step1_PreConfigs implements ISteps{
 
     public static String defaultFilePath(){
         return SystemParam.PROJECT_PATH + "/tmp/";
-//        return "/Users/zhongxiaotian/Desktop/";
     }
 
     @Override

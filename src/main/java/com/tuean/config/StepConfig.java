@@ -1,8 +1,10 @@
 package com.tuean.config;
 
+import com.tuean.entity.BidPolicy;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +35,11 @@ public class StepConfig {
     private static int instantOrder;
 
     private static WebDriver webDriver;
+
+    private static Long timeDiff;
+
+    @Autowired
+    private BidPolicy bidPolicy;
 
     @PostConstruct
     public static void init(){
@@ -96,5 +103,21 @@ public class StepConfig {
 
     public static void setWebDriver(WebDriver webDriver) {
         StepConfig.webDriver = webDriver;
+    }
+
+    public BidPolicy getBidPolicy() {
+        return bidPolicy;
+    }
+
+    public void setBidPolicy(BidPolicy bidPolicy) {
+        this.bidPolicy = bidPolicy;
+    }
+
+    public static Long getTimeDiff() {
+        return timeDiff;
+    }
+
+    public static void setTimeDiff(Long timeDiff) {
+        StepConfig.timeDiff = timeDiff;
     }
 }

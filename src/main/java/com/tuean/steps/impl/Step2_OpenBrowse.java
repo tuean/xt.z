@@ -7,7 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Time;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -26,6 +28,12 @@ public class Step2_OpenBrowse implements ISteps{
             for(Class clazz : driverList){
                 try{
                     webDriver = (WebDriver) clazz.newInstance();
+                    // 加上页面查询元素等待时间
+                    webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                    // script timeout
+                    webDriver.manage().timeouts().setScriptTimeout(100, TimeUnit.SECONDS);
+                    // pageLoad timeout
+                    webDriver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
                     break;
                 }catch(Exception var){
                     logger.error("cannot find " + clazz.getName());

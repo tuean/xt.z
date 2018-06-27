@@ -22,17 +22,24 @@ public class Step4_FillingIn implements ISteps {
     public void work() {
         WebDriver webDriver = StepConfig.getWebDriver();
 
-        // find the input of baidu
-        WebElement input = webDriver.findElement(By.xpath("//*[@id=\"kw\"]"));
+        try {
+            // find the input of baidu
+           WebElement input = webDriver.findElement(By.xpath("//*[@id=\"kw\"]"));
 
-        // filling in something
-        String searchText = "tuean";
-        input.sendKeys(searchText);
+           // filling in something
+           String searchText = "tuean";
+           if(input != null){
+               input.sendKeys(searchText);
+           }
 
-        // log the thing that you search
-        logger.info(searchText);
+           // log the thing that you search
+           logger.info(webDriver.getCurrentUrl() + ">>>"  + searchText);
 
-        StepConfig.next();
+        } catch (Exception var){
+           var.printStackTrace();
+        }
+
+       StepConfig.next();
 
     }
 }
