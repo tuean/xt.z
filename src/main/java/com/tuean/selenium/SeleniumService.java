@@ -29,28 +29,5 @@ public class SeleniumService {
     @Value("${bid.url}")
     private String paimaiUrl;
 
-    public static void start(String paimaiUrl) throws Exception{
 
-        WebDriver webDriver =  new SafariDriver();
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        webDriver.get(paimaiUrl);
-
-        Thread.sleep(1000);
-        WebElement logo = webDriver.findElement(By.className("index-logo-srcnew"));
-        Thread.sleep(1000);
-        logo.click();
-        System.out.println(logo.getLocation().x);
-
-        // get the screenshots of the whole window
-        // save the pic by the given path
-        File srcFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-        String filePath = "/Users/zhongxiaotian/Desktop/tmp" + System.currentTimeMillis();
-        FileUtils.copyFile(srcFile, new File(filePath));
-    }
-
-    public static void main(String[] args) throws Exception{
-        start("http://www.baidu.com");
-    }
 }
