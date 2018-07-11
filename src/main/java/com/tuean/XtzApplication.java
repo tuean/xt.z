@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -26,6 +27,7 @@ import static com.tuean.util.ReflectionUtls.getClassByPackage;
  */
 @SpringBootApplication
 @EnableScheduling
+@PropertySource("classpath:/bid.properties")
 public class XtzApplication {
 
     private static Logger logger = LoggerFactory.getLogger(XtzApplication.class);
@@ -36,7 +38,7 @@ public class XtzApplication {
 //        starter.start();
 
         // auto stop
-        ApplicationContextHolder.stopServer();
+//        ApplicationContextHolder.stopServer();
     }
 
 }

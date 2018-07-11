@@ -1,4 +1,4 @@
-package com.tuean;
+package com.tuean.lab;
 
 /**
  * Created by zhongxiaotian on 2018/3/3.

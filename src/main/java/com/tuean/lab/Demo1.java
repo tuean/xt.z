@@ -1,4 +1,4 @@
-package com.tuean;
+package com.tuean.lab;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;

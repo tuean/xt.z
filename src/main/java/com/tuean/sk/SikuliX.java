@@ -21,10 +21,6 @@ public class SikuliX {
 //        Pattern baidu = new Pattern(baiduLogo);
         Screen screen = new Screen();
 
-//        screen.wait(baiduLogo, 5);
-//        screen.click(baiduLogo);
-//        screen.doubleClick();
-
         try{
             screen.wait(file,3).doubleClick();
 

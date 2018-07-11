@@ -22,27 +22,38 @@ public class Step5_Confirm implements ISteps{
 
     @Override
     public void work() {
+
         WebDriver webDriver = StepConfig.getWebDriver();
 
 
+        // confirm
+        try {
+            // get confirm button //*[@id="testBtnConfirm"]
+            WebElement confirmButton = webDriver.findElement(By.xpath("//*[@id=\"testBtnConfirm\"]"));
 
-        // do search
-        WebElement searchButton = webDriver.findElement(By.xpath("//*[@id=\"su\"]"));
+            // initate mouse behavior
+//            Actions actions = new Actions(webDriver);
+//            actions.click(searchButton);
+            confirmButton.click();
+        } catch (Exception var){
+            logger.error("find confirm button error");
+            var.printStackTrace();
+        }
 
-        // initate mouse behavior
-        Actions actions = new Actions(webDriver);
-        actions.click(searchButton);
 
-//        try {
-//            WebElement confirmButton = webDriver.findElement(By.xpath("//*[@id=\"testBtnConfirm\"]/span"));
-//            if(confirmButton != null){
-//                confirmButton.click();
-//            }
-//        } catch (Exception var){
-//            var.printStackTrace();
-//        }
+        // agree
+        try {
+            // get agree button //*[@id="protocolBtnConfirm"]
+            WebElement agreeButton = webDriver.findElement(By.xpath("//*[@id=\"protocolBtnConfirm\"]"));
 
+            agreeButton.click();
+        } catch (Exception var){
+            logger.error("find agree button error");
+            var.printStackTrace();
+        }
 
         logger.info(webDriver.getCurrentUrl());
+
+        StepConfig.next();
     }
 }

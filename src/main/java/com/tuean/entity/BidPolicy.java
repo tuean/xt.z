@@ -1,5 +1,6 @@
 package com.tuean.entity;
 
+import com.tuean.Exception.GlobalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -8,10 +9,10 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
+ * the policy of the bid process
  *
  * @author zhongxiaotian
  * @date 2018/6/22
@@ -27,90 +28,7 @@ public class BidPolicy {
 
     private List<Policy> policyList = new ArrayList<>();
 
-    /**
-     * the policy of the three bid-chances
-     */
-    public static class Policy{
-
-        /**
-         * name of policy
-         */
-        private String name;
-
-        /**
-         * type of policy
-         */
-        private String type;
-
-        /**
-         * define a time that works
-         */
-        private Date startTime;
-
-        /**
-         * define seconds that works after some time
-         */
-        private long startAfterLastSeconds;
-
-        /**
-         * define additional money above last price
-         */
-        private int extraMoney;
-
-        /**
-         * define decided price
-         */
-        private int definedMonty;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public Date getStartTime() {
-            return startTime;
-        }
-
-        public void setStartTime(Date startTime) {
-            this.startTime = startTime;
-        }
-
-        public long getStartAfterLastSeconds() {
-            return startAfterLastSeconds;
-        }
-
-        public void setStartAfterLastSeconds(long startAfterLastSeconds) {
-            this.startAfterLastSeconds = startAfterLastSeconds;
-        }
-
-        public int getExtraMoney() {
-            return extraMoney;
-        }
-
-        public void setExtraMoney(int extraMoney) {
-            this.extraMoney = extraMoney;
-        }
-
-        public int getDefinedMonty() {
-            return definedMonty;
-        }
-
-        public void setDefinedMonty(int definedMonty) {
-            this.definedMonty = definedMonty;
-        }
-    }
-
+    private Policy instantPolicy;
 
     public String getInstantName() {
         return instantName;
@@ -142,8 +60,25 @@ public class BidPolicy {
         return stringBuffer.toString();
     }
 
+    public Policy getInstantPolicy() throws GlobalException {
+        if(this.policyList != null){
+            for(Policy policy : this.policyList){
+                if(policy.getName().trim().equals(this.instantName.trim())){
+                    this.instantPolicy = policy;
+                    break;
+                }
+            }
+        }
+        if(this.instantPolicy == null){
+            throw new GlobalException("instant policy is null");
+        }
+        return this.instantPolicy;
+    }
+
+
     @PostConstruct
-    public void init(){
+    public void init() throws GlobalException {
+        getInstantPolicy();
         logger.info(this.toString());
     }
 

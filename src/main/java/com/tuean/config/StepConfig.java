@@ -1,6 +1,7 @@
 package com.tuean.config;
 
 import com.tuean.entity.BidPolicy;
+import com.tuean.util.ApplicationContextHolder;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +77,7 @@ public class StepConfig {
 
     public static void end(){
         logger.info("got to end");
-        System.gc();
+        ApplicationContextHolder.stopServer();
         System.exit(0);
     }
 

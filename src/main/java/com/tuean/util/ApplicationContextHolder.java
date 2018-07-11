@@ -58,4 +58,5 @@ public class ApplicationContextHolder implements ApplicationContextAware {
         ServletWebServerApplicationContext context = (ServletWebServerApplicationContext) ApplicationContextHolder.getContext();
         context.getWebServer().stop();
     }
+
 }

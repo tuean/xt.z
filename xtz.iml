@@ -115,5 +115,6 @@
     <orderEntry type="library" name="Maven: com.sikulix:sikulix2tigervnc:2.0.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.16" level="project" />
   </component>
 </module>
