@@ -1,6 +1,5 @@
 package com.tuean.config;
 
-import lombok.Data;
 
 import java.util.Date;
 

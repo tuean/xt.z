@@ -21,11 +21,14 @@ public class Step1_PreConfigs implements ISteps{
 
     private static Logger logger = LoggerFactory.getLogger(Step1_PreConfigs.class);
 
+    private static List<Class> list = new ArrayList<>();
+
+    /**
+     * 设定可使用的浏览器类型
+     *
+     * @return
+     */
     public static List<Class> getBrowseDriverList(){
-        List<Class> list = new ArrayList<>();
-        list.add(SafariDriver.class);
-        list.add(ChromeDriver.class);
-        list.add(InternetExplorerDriver.class);
         return list;
     }
 
@@ -35,6 +38,10 @@ public class Step1_PreConfigs implements ISteps{
 
     @Override
     public void work() {
+        list.add(SafariDriver.class);
+        list.add(ChromeDriver.class);
+        list.add(InternetExplorerDriver.class);
+
         logger.info("Configuration completed");
         StepConfig.next();
     }

@@ -11,13 +11,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLContextBuilder;
-import org.apache.http.conn.ssl.TrustStrategy;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
@@ -59,7 +54,7 @@ public class HttpUtil {
         // 设置从连接池获取连接实例的超时
         configBuilder.setConnectionRequestTimeout(MAX_TIMEOUT);
         // 在提交请求之前 测试连接是否可用
-        configBuilder.setStaleConnectionCheckEnabled(true);
+//        configBuilder.setStaleConnectionCheckEnabled(true);
         requestConfig = configBuilder.build();
     }
 
@@ -143,10 +138,10 @@ public class HttpUtil {
         }
         apiUrl += param;
         String result = null;
-        HttpClient httpclient = new DefaultHttpClient();
+        CloseableHttpClient httpClient = HttpClients.createDefault();
         try {
             HttpGet httpGet = new HttpGet(apiUrl);
-            HttpResponse response = httpclient.execute(httpGet);
+            HttpResponse response = httpClient.execute(httpGet);
             int statusCode = response.getStatusLine().getStatusCode();
 
             System.out.println("执行状态码 : " + statusCode);
@@ -372,40 +367,40 @@ public class HttpUtil {
      *
      * @return
      */
-    private static SSLConnectionSocketFactory createSSLConnSocketFactory() {
-        SSLConnectionSocketFactory sslsf = null;
-        try {
-            SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
-
-                @Override
-                public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                    return true;
-                }
-            }).build();
-            sslsf = new SSLConnectionSocketFactory(sslContext, new X509HostnameVerifier() {
-
-                @Override
-                public boolean verify(String arg0, SSLSession arg1) {
-                    return true;
-                }
-
-                @Override
-                public void verify(String host, SSLSocket ssl) throws IOException {
-                }
-
-                @Override
-                public void verify(String host, X509Certificate cert) throws SSLException {
-                }
-
-                @Override
-                public void verify(String host, String[] cns, String[] subjectAlts) throws SSLException {
-                }
-            });
-        } catch (GeneralSecurityException e) {
-            e.printStackTrace();
-        }
-        return sslsf;
-    }
+//    private static SSLConnectionSocketFactory createSSLConnSocketFactory() {
+//        SSLConnectionSocketFactory sslsf = null;
+//        try {
+//            SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
+//
+//                @Override
+//                public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//                    return true;
+//                }
+//            }).build();
+//            sslsf = new SSLConnectionSocketFactory(sslContext, new X509HostnameVerifier() {
+//
+//                @Override
+//                public boolean verify(String arg0, SSLSession arg1) {
+//                    return true;
+//                }
+//
+//                @Override
+//                public void verify(String host, SSLSocket ssl) throws IOException {
+//                }
+//
+//                @Override
+//                public void verify(String host, X509Certificate cert) throws SSLException {
+//                }
+//
+//                @Override
+//                public void verify(String host, String[] cns, String[] subjectAlts) throws SSLException {
+//                }
+//            });
+//        } catch (GeneralSecurityException e) {
+//            e.printStackTrace();
+//        }
+//        return sslsf;
+//    }
 
     /**
      *发送短信验证码

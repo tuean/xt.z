@@ -21,7 +21,7 @@ public class Starter {
             Map.Entry entry = (Map.Entry) iterator.next();
             Class clazz = (Class) entry.getValue();
             try {
-                Method method =  clazz.getMethod("work");
+                Method method = clazz.getMethod("work");
                 StepConfig.setInstantOrder((Integer) entry.getKey());
                 method.invoke(clazz.newInstance());
             } catch (Exception var){

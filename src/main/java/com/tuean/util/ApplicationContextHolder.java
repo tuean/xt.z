@@ -56,7 +56,9 @@ public class ApplicationContextHolder implements ApplicationContextAware {
      */
     public static void stopServer(){
         ServletWebServerApplicationContext context = (ServletWebServerApplicationContext) ApplicationContextHolder.getContext();
-        context.getWebServer().stop();
+        if (context != null) {
+            context.getWebServer().stop();
+        }
     }
 
 }
