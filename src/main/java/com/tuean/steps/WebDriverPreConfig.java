@@ -23,7 +23,7 @@ public class WebDriverPreConfig {
         list.add(InternetExplorerDriver.class);
     }
 
-    public List<Class> getBrowseDriverList() {
+    public static List<Class> getBrowseDriverList() {
         return list;
     }
 

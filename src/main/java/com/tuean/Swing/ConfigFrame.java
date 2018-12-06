@@ -7,15 +7,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  * 登录窗口ui
  */
-public class LoginConfigFrame {
+public class ConfigFrame {
 
-    private static Logger logger = LoggerFactory.getLogger(LoginConfigFrame.class);
+    private static Logger logger = LoggerFactory.getLogger(ConfigFrame.class);
 
 
     /**{
@@ -27,23 +28,31 @@ public class LoginConfigFrame {
         JFrame frame = new JFrame("标书信息");
         // Setting the width and height of frame
 //        frame.setSize(350, 200);
+        //获取屏幕大小
+        Dimension screenSize =Toolkit.getDefaultToolkit().getScreenSize();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(0, 0, 350, 200);
-        JPanel panel = new JPanel();
-        // 添加面板
-        frame.add(panel);
-        placeComponents(panel);
+        frame.setBounds(0, 0, 350, screenSize.height);
+        frame.setLocation(0, 0);
+        JPanel login = new JPanel();
+        // 添加登录面板
+        frame.add(login);
+        placeComponents(login);
+        // 策略面板
+        JPanel policy = new JPanel();
+        frame.add(policy);
+        placePolicy(policy);
+
         frame.setVisible(true);
     }
 
+    /**
+     * 登录部分
+     * @param panel
+     */
     private static void placeComponents(JPanel panel) {
         panel.setLayout(null);
         // 标书号
         JLabel userLabel = new JLabel("标书号:");
-        /* 这个方法定义了组件的位置。
-         * setBounds(x, y, width, height)
-         * x 和 y 指定左上角的新位置，由 width 和 height 指定新的大小。
-         */
         userLabel.setBounds(10,20,80,25);
         panel.add(userLabel);
         JTextField userText = new JTextField(20);
@@ -62,7 +71,7 @@ public class LoginConfigFrame {
         JLabel identityLabel = new JLabel("身份证号：");
         identityLabel.setBounds(10, 80, 80, 25);
         panel.add(identityLabel);
-        JTextField identityText = new JTextField("80");
+        JTextField identityText = new JTextField();
         identityText.setBounds(100, 80, 165, 25);
         panel.add(identityText);
 
@@ -88,6 +97,21 @@ public class LoginConfigFrame {
                 openBrowse.work();
             }
         });
+    }
+
+    /**
+     * 策略部分
+     * @param panel
+     */
+    private static void placePolicy(JPanel panel) {
+        // 当前策略
+        JLabel userLabel = new JLabel("");
+        userLabel.setBounds(10,20,80,25);
+        panel.add(userLabel);
+        JTextField userText = new JTextField(20);
+        userText.setBounds(100,20,165,25);
+        panel.add(userText);
+
     }
 
 }

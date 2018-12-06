@@ -1,7 +1,6 @@
 package com.tuean.util;
 
 import org.springframework.beans.BeansException;
-import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
@@ -55,10 +54,12 @@ public class ApplicationContextHolder implements ApplicationContextAware {
      * stop the server
      */
     public static void stopServer(){
-        ServletWebServerApplicationContext context = (ServletWebServerApplicationContext) ApplicationContextHolder.getContext();
-        if (context != null) {
-            context.getWebServer().stop();
-        }
+//        ServletWebServerApplicationContext context = (ServletWebServerApplicationContext) ApplicationContextHolder.getContext();
+//        if (context != null) {
+//            context.getWebServer().stop();
+//        }
+
+//        ApplicationContext applicationContext = ApplicationContextHolder.getContext();
     }
 
 }

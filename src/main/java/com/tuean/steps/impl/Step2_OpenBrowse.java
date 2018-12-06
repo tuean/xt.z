@@ -3,6 +3,7 @@ package com.tuean.steps.impl;
 import com.tuean.annotation.StepOrder;
 import com.tuean.steps.ISteps;
 import com.tuean.config.StepConfig;
+import com.tuean.steps.WebDriverPreConfig;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +24,7 @@ public class Step2_OpenBrowse implements ISteps{
     @Override
     public void work(){
         WebDriver webDriver = null;
-        List<Class> driverList = Step1_PreConfigs.getBrowseDriverList();
+        List<Class> driverList = WebDriverPreConfig.getBrowseDriverList();
         if(webDriver == null){
             for(Class clazz : driverList){
                 try{
