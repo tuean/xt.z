@@ -3,12 +3,11 @@ package com.tuean.steps.impl;
 import com.tuean.annotation.StepOrder;
 import com.tuean.steps.ISteps;
 import com.tuean.config.StepConfig;
-import com.tuean.steps.WebDriverPreConfig;
+import com.tuean.config.WebDriverPreConfig;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Time;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

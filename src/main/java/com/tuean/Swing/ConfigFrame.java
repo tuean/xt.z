@@ -2,6 +2,7 @@ package com.tuean.Swing;
 
 import com.tuean.config.LoginConfig;
 import com.tuean.consont.SystemParam;
+import com.tuean.steps.Starter;
 import com.tuean.steps.impl.Step2_OpenBrowse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,8 +94,8 @@ public class ConfigFrame {
                 SystemParam.loginConfig = loginConfig;
 
                 // 打开浏览器
-                Step2_OpenBrowse openBrowse = new Step2_OpenBrowse();
-                openBrowse.work();
+                Starter starter = new Starter();
+                starter.start();
             }
         });
     }

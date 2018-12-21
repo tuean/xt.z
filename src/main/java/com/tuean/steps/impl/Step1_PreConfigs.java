@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 转移到{@link com.tuean.config.WebDriverPreConfig}
+ *
  * Created by zhongxiaotian on 2018/5/1.
  */
-@StepOrder(order = 1)
+//@StepOrder(order = 1)
+@Deprecated
 public class Step1_PreConfigs implements ISteps{
 
     private static Logger logger = LoggerFactory.getLogger(Step1_PreConfigs.class);
@@ -32,17 +35,14 @@ public class Step1_PreConfigs implements ISteps{
         return list;
     }
 
-    public static String defaultFilePath(){
-        return SystemParam.PROJECT_PATH + "/tmp/";
-    }
 
     @Override
     public void work() {
-        list.add(SafariDriver.class);
-        list.add(ChromeDriver.class);
-        list.add(InternetExplorerDriver.class);
-
-        logger.info("Configuration completed");
-        StepConfig.next();
+//        list.add(SafariDriver.class);
+//        list.add(ChromeDriver.class);
+//        list.add(InternetExplorerDriver.class);
+//
+//        logger.info("Configuration completed");
+//        StepConfig.next();
     }
 }

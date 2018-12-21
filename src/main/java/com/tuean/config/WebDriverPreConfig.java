@@ -1,5 +1,6 @@
-package com.tuean.steps;
+package com.tuean.config;
 
+import com.tuean.consont.SystemParam;
 import com.tuean.steps.impl.Step1_PreConfigs;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -25,6 +26,15 @@ public class WebDriverPreConfig {
 
     public static List<Class> getBrowseDriverList() {
         return list;
+    }
+
+    /**
+     * 零时文件输出目录
+     *
+     * @return
+     */
+    public static String defaultFilePath(){
+        return SystemParam.PROJECT_PATH + "/tmp/";
     }
 
 

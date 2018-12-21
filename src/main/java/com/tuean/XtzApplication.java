@@ -1,6 +1,7 @@
 package com.tuean;
 
 import com.tuean.Swing.ConfigFrame;
+import com.tuean.config.WebDriverPreConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,16 +22,14 @@ public class XtzApplication {
     public static void main(String[] args) {
 
         // 预先设置
-//        WebDriverPreConfig preConfig = new WebDriverPreConfig();
+        WebDriverPreConfig preConfig = new WebDriverPreConfig();
+
+        // 后台定时任务
+
 
         // 启动信息设置面板
         ConfigFrame configFrame = new ConfigFrame();
         configFrame.createAndShowGUI();
-
-
-//        SpringApplication.run(XtzApplication.class);
-//        Starter starter = new Starter();
-//        starter.start();
 
     }
 

@@ -47,7 +47,7 @@ public class Step5_Confirm implements ISteps{
             WebElement agreeButton = webDriver.findElement(By.xpath("//*[@id=\"protocolBtnConfirm\"]"));
 
             agreeButton.click();
-        } catch (Exception var){
+        } catch (Exception var) {
             logger.error("find agree button error");
             var.printStackTrace();
         }

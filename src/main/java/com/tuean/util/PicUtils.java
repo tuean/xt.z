@@ -1,6 +1,7 @@
 package com.tuean.util;
 
 import com.tuean.config.StepConfig;
+import com.tuean.config.WebDriverPreConfig;
 import com.tuean.steps.impl.Step1_PreConfigs;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -74,7 +75,7 @@ public class PicUtils {
 
 
     public static String getDefaultPicUrl(){
-        return Step1_PreConfigs.defaultFilePath() + System.currentTimeMillis() + ".jpg";
+        return WebDriverPreConfig.defaultFilePath() + System.currentTimeMillis() + ".jpg";
     }
 
 
