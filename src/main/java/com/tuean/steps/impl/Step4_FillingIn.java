@@ -24,9 +24,6 @@ public class Step4_FillingIn implements ISteps {
 
     private static Logger logger = LoggerFactory.getLogger(Step4_FillingIn.class);
 
-    @Autowired
-    private PropertiesUtils propertiesUtils;
-
     @Override
     public void work() {
         WebDriver webDriver = StepConfig.getWebDriver();
@@ -35,12 +32,12 @@ public class Step4_FillingIn implements ISteps {
 
             // bidNumber
             WebElement bidNumberInput = webDriver.findElement(By.xpath("//*[@id=\"bidnumber\"]"));
-            String bidNumber = propertiesUtils.get("bid.number");
+            String bidNumber = PropertiesUtils.bidGet("bid.number");
             bidNumberInput.sendKeys(bidNumber);
 
             // bidPassword
             WebElement bidPasswordInput = webDriver.findElement(By.xpath("//*[@id=\"bidpassword\"]"));
-            String bidPassword = propertiesUtils.get("bid.password");
+            String bidPassword = PropertiesUtils.bidGet("bid.password");
             bidPasswordInput.sendKeys(bidPassword);
 
             // auth code

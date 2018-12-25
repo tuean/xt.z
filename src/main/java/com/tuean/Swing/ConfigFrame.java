@@ -19,6 +19,8 @@ public class ConfigFrame {
 
     private static Logger logger = LoggerFactory.getLogger(ConfigFrame.class);
 
+    public static Integer x = 340;
+    public static Integer y = 230;
 
     /**{
      * 创建并显示GUI。出于线程安全的考虑，
@@ -27,21 +29,14 @@ public class ConfigFrame {
     public void createAndShowGUI() {
         // 创建 JFrame 实例
         JFrame frame = new JFrame("标书信息");
-        // Setting the width and height of frame
-//        frame.setSize(350, 200);
         //获取屏幕大小
         Dimension screenSize =Toolkit.getDefaultToolkit().getScreenSize();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(0, 0, 350, screenSize.height);
-        frame.setLocation(0, 0);
+        frame.setBounds(0, 0, x, y);
         JPanel login = new JPanel();
         // 添加登录面板
         frame.add(login);
         placeComponents(login);
-        // 策略面板
-        JPanel policy = new JPanel();
-        frame.add(policy);
-        placePolicy(policy);
 
         frame.setVisible(true);
     }
@@ -100,19 +95,5 @@ public class ConfigFrame {
         });
     }
 
-    /**
-     * 策略部分
-     * @param panel
-     */
-    private static void placePolicy(JPanel panel) {
-        // 当前策略
-        JLabel userLabel = new JLabel("");
-        userLabel.setBounds(10,20,80,25);
-        panel.add(userLabel);
-        JTextField userText = new JTextField(20);
-        userText.setBounds(100,20,165,25);
-        panel.add(userText);
-
-    }
 
 }

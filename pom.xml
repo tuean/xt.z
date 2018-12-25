@@ -137,12 +137,22 @@
             <version>3.1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sikulix</groupId>
+            <artifactId>sikulixapi</artifactId>
+            <version>1.1.4-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
         <repository>
             <id>snapshot</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>sk1</id>
+            <url>http://oss.sonatype.org/content/groups/public</url>
         </repository>
     </repositories>
 

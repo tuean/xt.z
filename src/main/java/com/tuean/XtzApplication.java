@@ -2,6 +2,7 @@ package com.tuean;
 
 import com.tuean.Swing.ConfigFrame;
 import com.tuean.config.WebDriverPreConfig;
+import com.tuean.task.CurrentPageTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,11 +26,13 @@ public class XtzApplication {
         WebDriverPreConfig preConfig = new WebDriverPreConfig();
 
         // 后台定时任务
-
+        CurrentPageTask pageTask = new CurrentPageTask();
+        pageTask.run();
 
         // 启动信息设置面板
         ConfigFrame configFrame = new ConfigFrame();
         configFrame.createAndShowGUI();
+
 
     }
 

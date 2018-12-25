@@ -75,7 +75,7 @@ public class PicUtils {
 
 
     public static String getDefaultPicUrl(){
-        return WebDriverPreConfig.defaultFilePath() + System.currentTimeMillis() + ".jpg";
+        return FileUtil.defaultFilePath() + System.currentTimeMillis() + ".jpg";
     }
 
 

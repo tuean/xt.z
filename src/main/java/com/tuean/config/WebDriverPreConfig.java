@@ -28,14 +28,8 @@ public class WebDriverPreConfig {
         return list;
     }
 
-    /**
-     * 零时文件输出目录
-     *
-     * @return
-     */
-    public static String defaultFilePath(){
-        return SystemParam.PROJECT_PATH + "/tmp/";
-    }
+
+
 
 
 }

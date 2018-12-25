@@ -18,7 +18,6 @@ import static com.tuean.util.ReflectionUtls.getClassByPackage;
 /**
  * Created by zhongxiaotian on 2018/4/30.
  */
-@Component
 public class StepConfig {
 
     private static Logger logger = LoggerFactory.getLogger(StepConfig.class);
@@ -39,10 +38,12 @@ public class StepConfig {
 
     private static Long timeDiff;
 
-    @Autowired
     private BidPolicy bidPolicy;
 
-    @PostConstruct
+    static{
+        init();
+    }
+
     public static void init(){
         Map<Integer, Class> map = getClassByPackage("com.tuean.steps");
         if(map != null && !map.isEmpty()){
