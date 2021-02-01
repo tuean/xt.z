@@ -20,4 +20,9 @@ public class StringUtils {
         return new String(cs);
     }
 
+    public static boolean isEmpty(String source) {
+        if (source == null) return true;
+        return source.trim().isEmpty();
+    }
+
 }

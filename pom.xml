@@ -76,11 +76,18 @@
             <!--<version>2.9.0</version>-->
         <!--</dependency>-->
 
+<!--        <dependency>-->
+<!--            <groupId>org.seleniumhq.selenium</groupId>-->
+<!--            <artifactId>selenium-java</artifactId>-->
+<!--            <version>3.13.0</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.13.0</version>
+            <version>4.0.0-alpha-7</version>
         </dependency>
+
 
         <!--<dependency>-->
             <!--<groupId>com.sikulix</groupId>-->
@@ -91,7 +98,8 @@
         <dependency>
             <groupId>com.sikulix</groupId>
             <artifactId>sikulixapi</artifactId>
-            <version>1.1.2</version>
+<!--            <version>1.1.2</version>-->
+            <version>2.0.4</version>
         </dependency>
 
         <!--<dependency>-->
@@ -172,13 +180,13 @@
                         </compilerArgs>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <configuration>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                    </configuration>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-war-plugin</artifactId>-->
+<!--                    <configuration>-->
+<!--                        <failOnMissingWebXml>false</failOnMissingWebXml>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
 
             </plugins>
         </pluginManagement>
